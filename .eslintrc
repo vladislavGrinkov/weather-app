@@ -1,0 +1,54 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
+  "plugins": ["@typescript-eslint", "react-hooks"],
+  "parser":  "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion":  2018,
+    "sourceType":  "module",
+    "ecmaFeatures": {
+      "jsx":  true
+    }
+  },
+  "rules":  {
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "eol-last": 0,
+    "no-use-before-define": "off",
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "react/jsx-filename-extension": [2, {
+      "extensions": [
+        ".tsx"
+      ]
+    }],
+    "react/jsx-props-no-spreading": 0, // off ...a
+    "import/prefer-default-export": 0,
+    "import/extensions": [1, "ignorePackages", {
+      "ts": "never",
+      "tsx": "never"
+    }]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/extensions": [".ts", ".tsx"],
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}
