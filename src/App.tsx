@@ -1,9 +1,6 @@
-import React from 'react';
+import React, { FC, ReactElement } from 'react';
+import { Provider } from 'react-redux';
 
-function App() {
-  return (
-    <></>
-  );
-}
+import { store } from './init/store';
 
-export default App;
+export const App: FC = (): ReactElement => <Provider store={store}>1</Provider>;
