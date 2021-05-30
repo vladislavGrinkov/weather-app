@@ -1,6 +1,33 @@
 import React, { FC, ReactElement } from 'react';
+import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
-
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import { store } from './init/store';
+import { Weathers } from './bus/weather/index';
+import { LoginView } from './views/LoginView';
+import { login } from './views/LoginView/login';
+import { AuthComponent } from './bus/auth/index';
+import history from './services/history';
 
-export const App: FC = (): ReactElement => <Provider store={store}>1</Provider>;
+export const App: FC = (): ReactElement => (
+  <Provider store={store}>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path={login} component={LoginView} />
+        <Route exact path="/">
+          <Redirect to="/login" />
+        </Route>
+        <AuthComponent>
+          <Route path="/weathers">
+            <Weathers />
+          </Route>
+        </AuthComponent>
+      </Switch>
+    </BrowserRouter>
+  </Provider>
+);

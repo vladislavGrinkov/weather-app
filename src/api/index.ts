@@ -1,4 +1,3 @@
-// Moscow&appid=df999e7d2e85ee16c3c2efc9b808d054
 import { root } from './confing';
 import { Weathers } from '../bus/weather/types';
 
@@ -12,10 +11,10 @@ type APIFetchDataTypes = {
 
 export const api: APIFetchDataTypes = {
   weather: {
-    fetch: (): Promise<Weathers> => fetch(`${root}/Moscow&appid=df999e7d2e85ee16c3c2efc9b808d054`, {
+    fetch: (): Promise<Weathers> => fetch(`${root}Moscow&appid=df999e7d2e85ee16c3c2efc9b808d054`, {
       method: 'GET',
     })
       .then((response) => response.json())
-      .then(({ coord }) => ({ results: coord.name })),
+      .then((item) => ({ results: [{ name: item.name }] })),
   },
 };
