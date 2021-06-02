@@ -19,14 +19,14 @@ export const App: FC = (): ReactElement => (
     <BrowserRouter>
       <Switch>
         <Route exact path={login} component={LoginView} />
-        <Route exact path="/">
-          <Redirect to="/login" />
+        <Route>
+          <AuthComponent>
+            <Route path="/weathers">
+              <Redirect from="/login" to="/weathers" />
+              <Weathers />
+            </Route>
+          </AuthComponent>
         </Route>
-        <AuthComponent>
-          <Route path="/weathers">
-            <Weathers />
-          </Route>
-        </AuthComponent>
       </Switch>
     </BrowserRouter>
   </Provider>

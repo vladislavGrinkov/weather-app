@@ -5,38 +5,47 @@ import React, {
   FormEvent,
   SyntheticEvent,
 } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUserAction, fetchAsync } from '../action';
+import { TUsers } from '../types';
+import { AppState } from '../../../init/rootReducer';
+import { TState } from '../reducer';
 
-export type AuthType = {
-  username: string;
-  password: string;
-  dirty: boolean;
-};
+export type TEvent = {
+  handleChange(e: ChangeEvent<HTMLInputElement>): void;
+  handleSubmit(e: SyntheticEvent): void;
+  cred: TUsers
+}
 
-export const useAuthFetch = () => {
-  const [state, setState] = useState<AuthType>({
+export type TResData = {
+  isError: boolean,
+  isAuth: boolean,
+}
+
+export const useAuthFetch = (): TEvent & TResData => {
+  const [cred, setCred] = useState<TUsers>({
     username: '',
     password: '',
-    dirty: false,
   });
+  const dispatch = useDispatch();
+  const { isError, isAuth } = useSelector<AppState, TState>((state) => state.LoginReducer);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setState({
-      ...state,
-      dirty: false,
+    setCred({
+      ...cred,
       [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    setState({
-      ...state,
-      dirty: true,
-    });
+    dispatch(fetchAsync(cred));
   };
 
   return {
-    ...state,
+    cred,
+    isAuth,
+    isError,
     handleChange,
     handleSubmit,
   };

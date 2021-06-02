@@ -5,12 +5,17 @@ import React, {
   FormEvent, useState,
 } from 'react';
 import styled from 'styled-components';
+import Cookie from 'js-cookie';
 import { useAuthFetch } from './hooks/useAuthFetch';
+import historyService from '../../services/history';
+import { weathers } from './login';
 
 export const LoginView: FC = (): ReactElement => {
   const {
-    username, password, dirty, handleSubmit, handleChange,
+    cred, handleSubmit, handleChange, isError, isAuth,
   } = useAuthFetch();
+  const { username, password } = cred;
+  if (Cookie.get('token')) historyService.replace(weathers);
   return (
     <Container>
       <form onSubmit={handleSubmit}>
@@ -25,7 +30,6 @@ export const LoginView: FC = (): ReactElement => {
         <div>
           <button type="submit">Войти</button>
         </div>
-        {dirty && <div>SUCCESS</div>}
       </form>
     </Container>
   );
@@ -35,5 +39,4 @@ const Container = styled.div`
   width: 250px;
   margin: 0 auto;
   line-height: 2.5em;
-  border: 1px solid black;
 `;
