@@ -10,7 +10,7 @@ import {
   LOGIN_USER,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
-  REGISTER_USER, LOGIN_USER_ASYNC, TUser, TUsers,
+  REGISTER_USER, LOGIN_USER_ASYNC, TUser, TUsers, LOGOUT_USER,
 } from '../types';
 import { registerUserService, loginUserService } from '../../../services/authenticationService';
 import { apiLogin, SendDataType } from '../../../api';

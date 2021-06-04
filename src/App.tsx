@@ -13,16 +13,16 @@ import { LoginView } from './views/LoginView';
 import { login } from './views/LoginView/login';
 import { AuthComponent } from './bus/auth/index';
 import history from './services/history';
+import './App.css';
 
 export const App: FC = (): ReactElement => (
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
-        <Route exact path={login} component={LoginView} />
+        <Route path={login} component={LoginView} />
         <Route>
           <AuthComponent>
-            <Route path="/weathers">
-              <Redirect from="/login" to="/weathers" />
+            <Route path="/">
               <Weathers />
             </Route>
           </AuthComponent>

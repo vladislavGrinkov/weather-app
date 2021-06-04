@@ -1,7 +1,12 @@
 import React, { FC, ReactNode, ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import Cookie from 'js-cookie';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom';
 import { login } from '../../views/LoginView/login';
 import historyService from '../../services/history';
 import { AppState } from '../../init/rootReducer';
@@ -14,6 +19,12 @@ export type Props = {
 export const AuthComponent = ({ children }: Props) => {
   const { isAuth } = useSelector<AppState, TState>((state) => state.LoginReducer);
   console.log(isAuth);
-  if (Cookie.get('token')) historyService.replace(login);
-  return Cookie.get('token') ? children : null;
+  if (isAuth || Cookie.get('token')) {
+    return children;
+  }
+  return (
+    <Route>
+      <Redirect to="/login" />
+    </Route>
+  );
 };

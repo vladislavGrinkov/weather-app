@@ -1,10 +1,12 @@
 import {
+  LOGIN_RESET,
   LOGIN_USER,
   LOGIN_USER_ASYNC,
   LOGIN_USER_ERROR,
   LOGIN_USER_SUCCESS,
   LoginActionTypes,
   LoginUserAction,
+  LOGOUT_USER,
   REGISTER_USER,
   RegisterActionTypes,
   TUsers,
@@ -33,6 +35,18 @@ export function loginSuccessAction(): LoginActionTypes {
 export function loginErrorAction(): LoginActionTypes {
   return {
     type: LOGIN_USER_ERROR,
+  };
+}
+
+export function logoutAction(): LoginActionTypes {
+  return {
+    type: LOGOUT_USER,
+  };
+}
+
+export function loginReset(): LoginActionTypes {
+  return {
+    type: LOGIN_RESET,
   };
 }
 

@@ -5,6 +5,8 @@ import {
   LoginActionTypes,
   TUsers,
   LOGIN_USER_ASYNC,
+  LOGOUT_USER,
+  LOGIN_RESET,
 } from './types';
 
 export type TState = {
@@ -24,6 +26,17 @@ const initialState: TState = {
 
 export const LoginReducer = (state = initialState, action: LoginActionTypes): TState => {
   switch (action.type) {
+    case LOGIN_RESET:
+      return {
+        ...state,
+        isAuth: false,
+        isError: false,
+      };
+    case LOGOUT_USER:
+      return {
+        ...state,
+        isAuth: false,
+      };
     case LOGIN_USER_ASYNC:
       return state;
     case LOGIN_USER:

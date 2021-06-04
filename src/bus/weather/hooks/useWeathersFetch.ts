@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { WeathersState } from '../reducer';
 import { AppState } from '../../../init/rootReducer';
 import { fetchAsync } from '../action';
+import { TState } from '../../../views/LoginView/reducer';
 
 export const useWeathersFetch = (): WeathersState => {
   const dispatch = useDispatch();

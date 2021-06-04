@@ -5,8 +5,9 @@ import React, {
   FormEvent,
   SyntheticEvent,
 } from 'react';
+import Cookie from 'js-cookie';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUserAction, fetchAsync } from '../action';
+import { loginUserAction, fetchAsync, loginReset } from '../action';
 import { TUsers } from '../types';
 import { AppState } from '../../../init/rootReducer';
 import { TState } from '../reducer';
@@ -20,6 +21,7 @@ export type TEvent = {
 export type TResData = {
   isError: boolean,
   isAuth: boolean,
+  cookie: string | undefined,
 }
 
 export const useAuthFetch = (): TEvent & TResData => {
@@ -27,10 +29,12 @@ export const useAuthFetch = (): TEvent & TResData => {
     username: '',
     password: '',
   });
+
   const dispatch = useDispatch();
   const { isError, isAuth } = useSelector<AppState, TState>((state) => state.LoginReducer);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(loginReset());
     setCred({
       ...cred,
       [e.target.name]: e.target.value,
@@ -43,6 +47,7 @@ export const useAuthFetch = (): TEvent & TResData => {
   };
 
   return {
+    cookie: Cookie.get('token'),
     cred,
     isAuth,
     isError,

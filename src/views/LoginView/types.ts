@@ -39,6 +39,16 @@ export type LoginUserErrorAction = {
   type: typeof LOGIN_USER_ERROR;
 }
 
+export const LOGOUT_USER = 'LOGOUT_USER';
+export type LogoutUserAction = {
+  type: typeof LOGOUT_USER;
+}
+
+export const LOGIN_RESET = 'LOGIN_RESET';
+export type LoginResetUserAction = {
+  type: typeof LOGIN_RESET;
+}
+
 // async
 export const LOGIN_USER_ASYNC = 'LOGIN_USER_ASYNC';
 export type LoginUserAsync = {
@@ -55,4 +65,6 @@ export type LoginActionTypes =
   | LoginUserAction
   | LoginUserSuccessAction
   | LoginUserErrorAction
-  | LoginUserAsync;
+  | LoginUserAsync
+  | LogoutUserAction
+  | LoginResetUserAction;

@@ -1,0 +1,90 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+label {
+    /*font-size: 3em;*/
+}
+
+.username {
+    /*width: 200px;*/
+    /*height: 30px;*/
+    /*border: none;*/
+    /*outline: none;*/
+    /*border-bottom: 2px solid #ccc;*/
+}
+
+.card {
+    width: 250px;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background-image: url('https://img.icons8.com/ios/452/city-block.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+input:focus {
+    /*border-bottom: 2px solid #ff4f12 !important;*/
+}
+
+.user:first-child {
+    /*margin-bottom: 1em;*/
+}
+
+.login {
+    background-color: #ff4f12;
+    display: inline-block;
+    padding:0.5em 5em;
+    border: .2em solid #fff;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    text-decoration: none;
+    font-weight:300;
+    color:#FFFFFF;
+    text-align: center;
+    transition: all .2s;
+    outline: none;
+    margin-top: 2em;
+}
+
+.login:hover {
+    color: #000000;
+    border: .2em solid #ff4f12;
+    background-color:#FFFFFF;
+    cursor: pointer;
+}
+
+.login:active {
+    border: .2em solid #ff4f12;
+}
